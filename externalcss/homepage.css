@@ -1,0 +1,117 @@
+  body{
+    background-color: #F9F9F9 ;
+  }
+ div{
+       box-sizing: border-box;
+      /* border: 1px solid blue; */
+       min-height: 50px;
+	 }
+	 #nav{
+	 
+	 	background-color: #fff;
+	 }
+	  .forlink {
+	     color: #000;
+	  }
+
+    
+	  
+	  #drop li a:hover{
+	     background-color: blue;
+	     color: #fff; 
+	  }
+    .head1{
+      background-color:blue;
+      color: #fff;
+      font-weigth: bold;
+      font-size: 30px;
+      height: 20px;
+    }
+
+    .head2{
+      background-color: blue;
+      color: #fff;
+      font-weigth: bold;
+      font-size: 30px;
+      height: 20px;
+     }
+
+     .head3{
+      background-color: blue;
+      color: #fff;
+      font-weigth: bold;
+      font-size: 30px;
+      height: 20px;
+     }
+     .head4{
+      background-color: blue;
+      color: #fff;
+      font-weigth: bold;
+      font-size: 30px;
+      height: 20px;
+     }
+
+    .footer a {
+      color: #A4A4A9;
+      text-decoration: none;
+
+    }
+    .footer{
+      background-color: #323232;
+      height: 400px;
+    }
+    .footer a:hover{
+      text-decoration: underline;
+    }
+    .footer p{
+      color: #A4A4A9;
+    }
+    .footer h6{
+      color: #fff;
+    }
+    
+    .subscribe{
+      color: #000;
+    }
+    
+
+    .footer2{
+      background-color: #fff;
+    }
+
+    .copyright{
+      color: #000;
+    }
+
+      .icons a{
+        font-size: 30px;
+        text-align: right;
+        color: black ;
+      }
+      
+     .icons{
+      text-align: right;
+     }
+
+     buy css
+.buy{
+  font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+  color:white;
+  background-color:rgb(226,120,33);
+  padding:10px;
+  margin:10px;
+  border-radius:10px 10px;
+  text-decoration: none;
+  width: 100%;
+}
+.buy:hover{
+  font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+  background-color:rgb(0,0,0);
+  color: rgb(226,120,33);
+}
+
+#pricediv{
+  background-color: black;
+  color: #fff;
+}
+    
