@@ -68,7 +68,7 @@
              
                 <div class=" col-12 mt-3">
             <div class="controls">
-                <img src="upload/<?php echo $product['seller_image']?>" alt='image' style='width:50px;'>
+                <img src="uploads/<?php echo $product['seller_image']?>" alt='image' style='width:50px;'>
              <label for='image'>Product Image:</label>
              <input type='file' name='proimage' id='image' class='form-control' />
                  </div> 
@@ -78,7 +78,7 @@
                   <select name='protype_id' id='product_type' class='form-control'>
                       <option value=''>Select a product type</option>
                        <?php
-                         //make reference to getCountry()
+                         //make reference to getProduct()
 
                      $product = $obj->getProducttype();
 
@@ -89,9 +89,9 @@
 
 
                          if(isset($product['product_type_id']) && $product['product_type']== $protypeid){
-                             echo "<option value='$protypeid'>$protypename</option>";
+                             echo "<option  selected value='$protypeid' >$protypename</option>";
                         }else{
-                       echo "<option value='$protypeid'>$protypename</option>";
+                       echo "<option value='$protypeid' >$protypename</option>";
                         }
                       
                      

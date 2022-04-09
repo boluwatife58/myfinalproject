@@ -27,7 +27,7 @@
                 <div class='col-8'>
               <p style='color:#000' class='mt-2'>Subscribe to our newsletter to get updates on our latest products.</p>
               <input type='text' placeholder="Enter Email address" name='email' class='form-control'>
-               <button class='btn btn-outline-primary subscribe mt-2'>Subscribe</button>
+               <button class='btn btn-outline-primary  mt-2'>Subscribe</button>
             </div>
             <div class='col'></div>
                </form>

@@ -2,10 +2,10 @@
       include_once('myheader.php');
 
       // include your class
-         include_once('docs/members.php');
+         include_once('docs/userclass.php');
 
         //create user object
-         $obj= new Seller;
+         $obj= new User;
 
       ?>
   
@@ -27,25 +27,21 @@
 
          if(empty($errors)){
         // include your class
-         include_once('docs/members.php');
+         include_once('docs/userclass.php');
 
         //create user object
-         $obj= new Seller;
+         $obj= new User;
 
           // access login method
-         
-           
-          $message = $obj->loginSeller($_POST['email'], $_POST['password']);
+          $message = $obj->logincustomers($_POST['email'], $_POST['password']);
 
            if ($message){
             // redirect to dashboard.php
-               header("Location: mydashboard.php");
+               header("Location: homepage2.php");
                exit;
              }else{
               echo "<div class='alert alert-danger'>Invalid Email and Password</div>";
              }
-
-             
 
         }else{
               echo "<ul class='alert alert-danger'>";        
@@ -54,15 +50,13 @@
            }
             echo "</ul>";
         }
-
-
       }
        ?>
                 
                  <form class='row' id='user2' method='post' action=''>
                           
-                           <h1 class=" mb-3 text-center">SELLER
-                                  <small>Login</small>
+                           <h1 class=" mb-3 text-center">LOGIN
+                                  <small></small>
                               </h1>
 
                   <div class='col-12 col-sm-12' id='form'>

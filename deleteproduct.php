@@ -1,6 +1,6 @@
 <?php
-
-        $proid=$_GET['id'];
+       if($_SERVER['REQUEST_METHOD']=='GET'){
+      $proid=$_GET['id'];
     include_once('docs/members.php');
      
      // create object of class
@@ -8,5 +8,9 @@
 
     $delete=$obj->deleteProducts($proid);
 
-    var_dump($delete);
+    header("Location: listproducts.php");
+  }else{
+          header("Location: listproducts.php");
+  }
+    //var_dump($delete);
 ?>

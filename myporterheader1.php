@@ -14,7 +14,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Register as a seller</title>
+	<title>Orders</title>
 	<link rel="stylesheet" href="css/bootstrap.css">
   <!-- animate css-->
     <link rel="stylesheet" type="text/css" href="animate/animate.css">
@@ -95,17 +95,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style='justify-content:flex-end'>
       <ul class="navbar-nav mb-2 mb-lg-0" id='links'>
         <li class="nav-item">
-          <a class="nav-link active forlink" aria-current="page" href="homepage.php">Home</a>
+          <a class="nav-link active forlink" aria-current="page" href="homepage2.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link  forlink" href="#">Get Help</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link  forlink" href="mydashboard.php">Dashboard</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link  forlink" href="listproducts.php">Products</a>
-        </li>
+         
         <li class="nav-item dropdown  ">
           <a class="nav-link dropdown-toggle  forlink" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Accounts
@@ -121,7 +116,7 @@
 		 
         </li>
         <li class="nav-item">
-          <a class="nav-link  forlink" href="sellerlogout.php">Log Out</a>
+          <a class="nav-link  forlink" href="userlogout.php">Log Out</a>
         </li>
         <li class="nav-item">
          

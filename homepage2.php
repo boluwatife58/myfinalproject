@@ -1,12 +1,12 @@
        <?php
-         include_once('myheader.php');
+         include_once('myheader2.php');
        ?>
         <!--Header -->
-        <div class='row' id='header'>
+        <!-- <div class='row' id='header'>
           <div class='col-sm-12 col  text-center' id='headersub'>
             <h4 >We give you the best shopping experience<b/> of a lifetime </h4>
           </div>
-        </div>
+        </div> -->
 
        	  <div class='row'>
        	  	<div class='col-12'>

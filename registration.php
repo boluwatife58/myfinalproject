@@ -13,17 +13,18 @@
              <div class='row justify-content-center'>
                <div class='col-md-6'>
             
-           <a href='sellerlogin.php'> <input type="radio" name="user" id='bt2' value='log in'></a>
-                 <label>Existing user? Login here</label>
+          
 
-                  <input type="radio" name="user" id='bt1' value="register">
-                 <label>New user? Register here</label><br>
+
 
           </div>
              </div>
     	    <div class='row mt-4 mb-4 justify-content-center'>
 
     	    	<div class= ' col-sm-12  col-md-6 '>
+
+
+                 <label>Existing user?  <a href='sellerlogin.php' style='text-decoration: none;'> Login here</label></a>
 
               <?php
          if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -45,8 +46,17 @@
            if(empty($_POST['seller_password'])){
              $errors['errseller_password']= "Password field cannot be empty";
            }
+            
+             $errmsg=$obj->checkEmail($_POST['seller_email']);
+           if($errmsg==true){
+             echo "<div class='alert alert-danger'>";
+             echo "Email not accepted";
+             echo "<div>";
+           }else{
+
          if(empty($errors)){
-        
+               
+            
           // access login method
           $output = $obj->registerSeller($_POST['seller_name'], $_POST['seller_email'], $_POST['seller_phone'], $_POST['seller_password']);
 
@@ -58,6 +68,7 @@
                     }else{
                       echo "<div class='alert alert-danger'>Oops, could not register your details.</div>";
                     }
+                }
 
         }
       }

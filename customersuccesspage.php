@@ -7,7 +7,7 @@
     		
     		<p class='alert alert-success'>Registration successful</p>
 
-    		<a href='sellerlogin.php'>Kindly click here to login</a>
+    		<a href='customerlogin.php'>Kindly click here to login</a>
     	</div>
     </div>
 

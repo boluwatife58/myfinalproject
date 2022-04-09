@@ -1,3 +1,14 @@
+  <?php
+ session_start();
+
+ // check if user authenticate
+ if(isset($_SESSION['mylogchecker']) && $_SESSION['mylogchecker']=='Rt_0_0_cMeg'){
+
+ }else{
+  header("Location: customerlogin.php");
+  exit;
+ }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,14 +60,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <form class="d-flex justify-content-center">
-        <input class="form-control me-2 text-center" type="search" placeholder="Search Products" aria-label="Search" style='border:1px solid blue;border-radius: 30px; color:blue;'>
+        <input class="form-control me-2 text-center" type="search" placeholder="Search Products" aria-label="Search" style='border:1px solid blue; color:blue;'>
         <button class="btn btn-primary " type="submit" style='border-radius: 30px;'>Search</button>
       </form>
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style='justify-content:flex-end'>
       <ul class="navbar-nav mb-2 mb-lg-0" id='links'>
-        <li class="nav-item">
+       <!--  <li class="nav-item">
           <a class="nav-link active forlink" aria-current="page" href="homepage.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
-        </li>
+        </li> -->
          <li class="nav-item">
           <a class="nav-link  forlink" href="registration.php"><i class="fa fa-info" aria-hidden="true"></i>
            Become a seller</a>
@@ -69,7 +80,11 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id='drop'>
             <li><a class="dropdown-item" href="customerlogin.php"><i class="fa fa-sign-in" aria-hidden="true"></i>  Log in</a></li>
-          
+              
+              <li>
+               <a class="dropdown-item  forlink" href="userlogout.php">Log Out</a>
+             </li>
+
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="customregistration.php">
             	<button class='btn btn-primary' style="width:100%"><i class="fa fa-sign-in" aria-hidden="true"></i>  Sign In</button>
