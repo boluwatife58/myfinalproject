@@ -23,6 +23,8 @@
         	}
         }
 
+
+
         function registerSeller($name, $email, $phone, $pswd){
         	// hash password
         	$password=password_hash($pswd, PASSWORD_DEFAULT);
@@ -43,6 +45,21 @@
         	return $message; 
         }
 
+                 
+                #check seller email
+        function checkEmail($email){
+          $sql="SELECT * FROM seller WHERE seller_email='$email' ";
+          // var_dump($sql);
+          // exit;
+          $result=$this->dbcon->query($sql);
+          if($this->dbcon->affected_rows==1){
+             return true;    
+          }else{
+            return false;
+          }
+
+        }
+                #end check seller email
 
                   #begin seller login
                    
@@ -62,6 +79,7 @@
                             session_start();
                             $_SESSION['sellername']= $row['seller_name'];
                             $_SESSION['sellerid'] = $row['seller_id'];
+                            $_SESSION['productid'] = $row['product_id'];
                              $_SESSION['mylogchecker']=  "Rt_0_0_cMeg";
                              return true;
                               }else{
@@ -158,7 +176,7 @@
 
       $extensions = array ('jpg', 'png', 'jpeg', 'gif', 'svg');
 
-      // get the uploaded file extansion
+      // get the uploaded file extension
        $file_ext= explode(".", $filename);
        $the_file_ext = end($file_ext); // to pick the last extension of an array
 
@@ -187,7 +205,7 @@
          #end upload file
 
 
-          # begin get clubs
+          # begin get product
          function getProducts(){;
           $sellerid=$_SESSION['sellerid'];
          // write query
@@ -210,7 +228,7 @@
                return $records;
              }
           } 
-        #end get clubs
+        #end get product
 
          # begin find product
            public function findProducts($proid){;
@@ -230,22 +248,23 @@
 
          # end find product 
 
+
+        
          # begin edit product
              public function updateProducts($productname, $productdesc, $productprice,$protype, $productimage, $proid){
                $sellerid=$_SESSION['sellerid']; 
                  // call upload file function
-                if(isset($_FILES['proimage']) && $_FILES['error']== 0){
+                if(isset($_FILES['error']) && $_FILES['proimage']['error']== 0){
                      $productimage= $this->uploadFiles();
                  }else{
                     $productimage = $proimage;
                  }
             
                    //var_dump($productimage);   
-                    //exit;
+                   // exit;
+                    
+                   $productimage= $this->uploadFiles();
 
-                 echo "<pre>";
-                     print_r($productimage);
-                  echo "</pre>";   
                 if($productimage != false){
 
                 
@@ -276,36 +295,133 @@
                 if(isset($_FILES['proimage']) && $_FILES['error']== 0){
                      $productimage= $this->uploadFiles();
                  }else{
-                    $productimage = $proimage;
+                  
                  }
             
-                   //var_dump($productimage);   
-                    //exit;
-
-                // echo "<pre>";
-                  //   print_r($productimage);
-                //echo "</pre>";   
-                if($productimage != false){
-
-                
-
+                  
                 // write sql query
-             $sql = "DELETE FROM `product` WHERE `product`.`product_id` ='$proid' ";
+             $sql = "DELETE FROM `product` WHERE`product_id` ='$proid' ";
                  
                  //run the query
              $result= $this->dbcon->query($sql);
              // var_dump($sql); exit;
 
-             if ($this->dbcon->affected_rows ==1 || $this->dbcon->affected_rows == 0){
+             if ($this->dbcon->affected_rows ==1 ){
                 return true;
              }else{
                 return false;
              }
 
-         }
+         
 
              }
-          # end delete product   
+          # end delete product 
+
+
+          
+        # begin get products 
+
+           public function getProd($protypeid){
+              // write query
+         $sql = "SELECT * FROM product WHERE product_id='$protypeid' ";
+         // var_dump($sql);
+          //exit;
+         // run query
+         $result= $this->dbcon->query($sql);
+
+           $records = array();
+           if ($this->dbcon->affected_rows > 0) {
+            // loop through result set and fetch all records
+              while ($row = $result->fetch_assoc()) {
+                $records[] = $row;
+
+              }
+
+              return $records;
+           }else{
+               
+               return $records;
+             }
+           }
+
+       # end get products
+
+        # begin find product for category
+           public function findcat($protypeid){;
+            // write query
+           $sql = "SELECT * FROM product WHERE product_type_id = '$protypeid' ";
+              // var_dump($sql);
+              //   exit;
+           //run query
+           $record = $this->dbcon->query($sql);
+               
+               $records = array();
+           if($record->num_rows > 0){
+             while ($row = $record->fetch_assoc()) {
+                $records[] = $row;
+              }
+              return $records;
+           }else{
+             return false;
+           }
+         }
+
+         # end find product  for catagory
+
+
+
+
+
+
+        # begin get products to homepage
+
+           public function getProdhome($prodtypeid){
+              // write query
+         $sql = "SELECT * FROM product WHERE product_type_id='$prodtypeid' order by rand() LIMIT 4 ";
+         // run query
+         $result= $this->dbcon->query($sql);
+
+           $records = array();
+           if ($this->dbcon->affected_rows > 0) {
+            // loop through result set and fetch all records
+              while ($row = $result->fetch_assoc()) {
+                $records[] = $row;
+
+              }
+
+              return $records;
+           }else{
+               
+               return $records;
+             }
+           }
+       # end get products to homepage  
+
+
+        //     # begin get orders
+        //  function getOrders(){;
+        //   $sellerid=$_SESSION['sellerid'];
+        //  // write query
+        //  $sql = "SELECT * FROM orders JOIN product_type ON product.product_type_id= product_type.product_type_id JOIN seller ON product.seller_id= seller.seller_id WHERE seller.seller_id='$sellerid' ";
+        
+
+        //  // run query
+        //  $result= $this->dbcon->query($sql);
+
+        //    $records = array();
+        //    if ($result->num_rows > 0) {
+        //     // loop through result set and fetch all records
+        //       while ($row = $result->fetch_assoc()) {
+        //         $records[] = $row;
+        //       }
+
+        //       return $records;
+        //    }else{
+               
+        //        return $records;
+        //      }
+        //   } 
+        // #end get orders
     }
 
    ?>
