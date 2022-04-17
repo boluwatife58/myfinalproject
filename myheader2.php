@@ -73,6 +73,11 @@
            Become a seller</a>
         </li>
         
+         <li class="nav-item">
+          <a class="nav-link  forlink" href="orders.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+           Orders<span class='badge badge-primary' ></span></a>
+        </li>
+
         <li class="nav-item dropdown  ">
           <a class="nav-link dropdown-toggle  forlink" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
             <i class="fa-solid fa-user"></i>

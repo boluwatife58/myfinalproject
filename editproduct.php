@@ -8,7 +8,7 @@
             $proid=$_GET['id'];
               // get club details from dbtable
             $obj= new Seller;
-            $product = $obj->findProducts($proid);
+            $products = $obj->findProducts($proid);
         
              //var_dump($product);
             
@@ -51,24 +51,24 @@
                    <h4>EDIT PRODUCT</h4>
 
                   <label for='Name'>Product Name:</label>          
-             <input type='text' name='pdname' placeholder='Product Name' id='name' class='form-control' value='<?php if(isset($product['product_name'])){ echo $product['product_name'];}?>'/>
+             <input type='text' name='pdname' placeholder='Product Name' id='name' class='form-control' value='<?php if(isset($products['product_name'])){ echo $products['product_name'];}?>'/>
                   
              </div>
              
              <div class='col-12 col-sm-12 mt-3'>
              <label for='description'>Product Description:</label>
-             <textarea name='prodesc' class='form-control' id='description' value="<?php if(isset($product['product_description'])){ echo $product['product_description'];}?>"></textarea>
+             <textarea name='prodesc' class='form-control' id='description'><?php if(isset($products['product_description'])){ echo $products['product_description'];}?></textarea>
              </div>
              
               <div class='col-12 mt-3'>
              <label for='price'>Product Price:</label>
-             <input type='text' name='proprice' placeholder='Enter your price' id='price' class='form-control' value='<?php if(isset($product['product_price'])){ echo $product['product_price'];}?>'/>
+             <input type='text' name='proprice' placeholder='Enter your price' id='price' class='form-control' value='<?php if(isset($products['product_price'])){ echo $products['product_price'];}?>'/>
                
              </div>
              
                 <div class=" col-12 mt-3">
             <div class="controls">
-                <img src="uploads/<?php echo $product['seller_image']?>" alt='image' style='width:50px;'>
+                <img src="uploads/<?php echo $products['seller_image']?>" alt='image' style='width:50px;'>
              <label for='image'>Product Image:</label>
              <input type='file' name='proimage' id='image' class='form-control' />
                  </div> 
@@ -86,10 +86,8 @@
                         $protypeid= $value['product_type_id'];
                         $protypename= $value['product_type'];
 
-
-
-                         if(isset($product['product_type_id']) && $product['product_type']== $protypeid){
-                             echo "<option  selected value='$protypeid' >$protypename</option>";
+                         if(isset($products['product_type_id']) && $products['product_type_id']== $protypeid){
+                             echo "<option value='$protypeid' selected>$protypename</option>";
                         }else{
                        echo "<option value='$protypeid' >$protypename</option>";
                         }
@@ -100,7 +98,7 @@
                         }
                       ?>
                   </select>
-                  
+
             </div>
 
                  

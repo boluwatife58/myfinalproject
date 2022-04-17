@@ -123,7 +123,8 @@
                     <?php
          include_once('docs/userclass.php');
          include_once('docs/members.php');
-
+          
+         // $_SESSION['orderid'] = $row['order_id'];
          if(isset($_SESSION['customerid'])){
           $userid=$_SESSION['customerid'];
          }
@@ -132,6 +133,7 @@
           if(!empty($_POST['quantity'])){
            $cart=$orders->insertCart($_POST['productid'], $_POST['sellerid'],$_POST['custid'], $_POST['quantity']);
             $custord=$orders->insertCustOrder($_POST['productid'], $_POST['sellerid'],$_POST['custid'], $_POST['quantity']);
+            $delivery=$orders->insertDelivery($_POST['productid'], $_POST['orderid']);
            if($cart==true){
              $result="Successfully added to cart";
              echo $result;
@@ -164,6 +166,7 @@
                         $prdprice= $value['product_price'];
                         $prdid= $value['product_id'];
                         $sellerid=$value['seller_id'];
+                        $orderid=$_SESSION['orderid']
                     ?>
                 <span style='color:#000;'><?php echo $prdname; ?></span>
                 <br/>
@@ -179,6 +182,7 @@
                       <input type="hidden" name="productid" value='<?php echo $prdid; ?>'>
                        <input type="hidden" name="price" value='<?php echo $prdprice; ?>'>
                        <input type='hidden' name='sellerid' value='<?php echo $sellerid; ?>'>
+                       <input type='hidden' name='orderid' value='<?php echo $orderid; ?>'>
                     <button type='submit' name='submit' class='btn btn-primary btnAddToCart' id='btbuy' style=' border-radius: 40px;' ><i class="fa fa-shopping-cart" aria-hidden="true"></i>Add To Cart</button>
                     <button type='submit' name='submit' class='btn btn-primary mt-3' id='btbuy' style=' border-radius: 40px;'><a href='alldetails.php?id=<?php echo $id; ?>' style='color:#fff;text-decoration: none;'>View More</a></button>
 

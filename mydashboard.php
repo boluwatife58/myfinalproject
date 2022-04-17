@@ -47,7 +47,7 @@
                 </div>
                 <div class="mr-5" style='font-weight:bold;'>Payments</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="" style='text-decoration: none;'>
+              <a class="card-footer text-white clearfix small z-1" href="listpayment.php" style='text-decoration: none;'>
                 <span class="float-left"  >View Details</span>
                 <span class="float-right">
                   <i class="fa fa-angle-right"></i>

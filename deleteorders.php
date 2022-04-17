@@ -7,6 +7,7 @@
     $obj= new User;
 
     $delete=$obj->deleteorder($proid);
+    $deletecustord=$obj->deletecustorder($proid);
 
     header("Location: orders.php");
   }else{

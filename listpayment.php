@@ -31,6 +31,7 @@
       <th scope="col">Quantity</th>
 	  <th scope="col">Customer Name</th>
     <th scope="col">Customer Address</th>
+    <th scope="col">Status</th>
   
 	  
     </tr>
@@ -45,7 +46,7 @@
         $obj= new User;
 
         // reference getClubs
-        $orders=$obj->getOrders();
+        $orders=$obj->getOrderpayment();
                
           
           $counter= 1;
@@ -62,6 +63,7 @@
           <td><?php echo $value['quantity'];?></td>
           <td><?php echo $value['customer_name'];?></td>
           <td><?php echo $value['customer_address'];?></td>
+          <td><?php echo $value['status'];?></td>
         </tr>
         <?php
           }
