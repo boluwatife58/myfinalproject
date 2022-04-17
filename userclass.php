@@ -68,6 +68,7 @@
                             $_SESSION['customername']= $row['customer_name'];
                             $_SESSION['customerid'] = $row['customer_id'];
                            $_SESSION['sellerid'] = $row['seller_id'];
+                            $_SESSION['orderid'] = $row['order_id'];
                             $_SESSION['mylogchecker']=  "Rt_0_0_cMeg";
                              return true;
                               }else{
@@ -189,6 +190,29 @@
              }
           # end delete orders
 
+           #  begin delete  from customer_orders
+             public function deletecustorder($custordid){
+              
+            
+                  
+                // write sql query
+             $sql = "DELETE FROM `customer_order` WHERE`customer_order_id` ='$custordid' ";
+                 
+                 //run the query
+             $result= $this->dbcon->query($sql);
+             // var_dump($sql); exit;
+
+             if ($this->dbcon->affected_rows ==1 ){
+                return true;
+             }else{
+                return false;
+             }
+
+         
+
+             }
+          # end delete customer_orders   
+
           #begin get total quantity
           function totalquantity($custid){
             $sql="SELECT SUM(quantity) AS totalquantity FROM cart WHERE customer_id='$custid' AND status='pending' ";
@@ -261,19 +285,48 @@
              // exit;
             $result=$this->dbcon->query($sql);
             if($this->dbcon->affected_rows == 1){
-                $id=$this->dbcon->insert_id;
-                $_SESSION['custid']=$id;
+                 $last=$this->dbcon->insert_id;
+                 $b=$_SESSION['custid']=$last;
+                 //$this->insertDelivery($user,);
                 return true;
             }else{
                 return false;
             }
          }
          #end insert cust order
+         // #start insert Delivery
+         // public function insertDelivery($userid, $orderid){
+         //    $userid=$_SESSION['customerid'];
+         //    $sql="INSERT INTO delivery set customer_id='$userid', order_id='$orderid'";
+         //    $result=$this->dbcon->query($sql);
+         //    if ($this->dbcon->affected_rows == 1) {
+         //        return true;
+         //    }
+         //    else{
+         //        return false;
+         //    }
+         // }
+
+         // public function updateDelivery($name,$phone,$address,$order){
+         //    //$order=$_SESSION['orderid'];
+         //    $sql="UPDATE delivery SET name='$name', phone_number='$phone', delivery_address='$address',delivery_status='pending' WHERE order_id='$order'";
+         //    // var_dump($sql);
+         //    // exit;
+         //    $result=$this->dbcon->query($sql);
+
+         //    if($this->dbcon->affected_rows == 1){
+         //        return true;
+         //    }else{
+         //        return false;
+         //    }
+         // }
+         // #end insert Delivery
 
          #begin update orders from cust order
-          public function updateCustorder($transref,$custid){
+          public function updateCustorder($custid){
+            $userid=$_SESSION['customerid'];
             // write query
-            $sql="UPDATE customer_order SET status='paid',trans_reference='$transref' WHERE customer_order_id='$custid' ";
+            $sql="UPDATE customer_order SET status='paid' WHERE customer_id='$userid' ";
 
             $result=$this->dbcon->query($sql);
             if($this->dbcon->affected_rows==1){
@@ -289,6 +342,25 @@
             $sellerid=$_SESSION['sellerid'];
             // write query
             $sql="SELECT * FROM customer_order join customer ON customer_order.customer_id=customer.customer_id JOIN product ON customer_order.product_id=product.product_id JOIN seller ON customer_order.seller_id=seller.seller_id  where seller.seller_id='$sellerid' ";
+               
+               $record=array();
+            $result=$this->dbcon->query($sql);
+            if($this->dbcon->affected_rows > 0){
+              while($row= $result->fetch_assoc()){
+                $record[] = $row;
+              }
+              return $record;
+            }else{
+                return $record;
+            }
+           }
+           #end get all orders
+
+            #begin get all orders
+           public function getOrderpayment(){
+            $sellerid=$_SESSION['sellerid'];
+            // write query
+            $sql="SELECT * FROM customer_order join customer ON customer_order.customer_id=customer.customer_id JOIN product ON customer_order.product_id=product.product_id JOIN seller ON customer_order.seller_id=seller.seller_id  where seller.seller_id='$sellerid' AND status='paid' ";
                
                $record=array();
             $result=$this->dbcon->query($sql);

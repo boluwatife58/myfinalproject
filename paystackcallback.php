@@ -11,7 +11,7 @@ include_once('myporterheader1.php');
     $outcome=$obj->updateCustorder($ref,$custid);
     $delete=$obj->emptycart($userid);
     if($delete==true){
-        header("Location: delivery.php");
+        header("Location: homepage2.php");
     }else{
         header("Location: orders.php");
       }
